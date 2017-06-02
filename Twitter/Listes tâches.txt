@@ -1,0 +1,5 @@
+Liste des tâches :
+
+- Parsing JSON
+- Gestion des exceptions
+- Configuration de la méthode de récupération (XPath ou CSS)

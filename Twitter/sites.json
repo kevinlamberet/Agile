@@ -1,0 +1,20 @@
+[
+	{
+		"title" : "h1",
+		"description": "description",
+		"content": "articleBody",
+		"url" : "http://www.lemonde.fr"
+	},
+	{
+		"title" : "h1",
+		"description": "description",
+		"content": "articleBody",
+		"url" : "http://tempsreel.nouvelobs.com/"
+	},
+	{
+		"title" : "h1",
+		"description": "description",
+		"content": "articleBody",
+		"url" : "http://www.lefigaro.fr/"
+	}
+]
