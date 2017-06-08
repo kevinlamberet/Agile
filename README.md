@@ -1,13 +1,10 @@
 Agile
 
-![alt text](img/grimace-1_2462_w620.jpg)
-
-
 Documentation API
 
-##routing :
+# routing :
 
-### RSS :
+## RSS :
 
     NAME : poster un article
     TYPE : POST
@@ -27,7 +24,7 @@ Documentation API
     PARAMETER : id dans l'URL 
     RESPONSE : 200 OK ! récupération d'un article
 
-### TWITTER
+## TWITTER
 
     NAME : poster un twitt
     TYPE : POST
@@ -46,8 +43,8 @@ Documentation API
     URL : "url"/twitter/{id}
     PARAMETER : id dans l'URL 
     RESPONSE : 200 OK ! récupération d'un twitt
-    
-### LOGIN
+
+## LOGIN
 
     NAME : Créer un compte
     TYPE : POST
