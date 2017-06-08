@@ -12,11 +12,14 @@ class Moteur
   private $isException = true;
 
   private $crawler;
-  
+
   // les selecteurs sont uniquement en XPATH
   private $selectors =
   array (
-    "lefigaro.fr" => array("h1" => "//*/h1", "description" => "//*[@id='20170519LIVWWW00020']/div/p", "content" => "//*[@id='live-messages']")
+    "lefigaro.fr" => array("h1" => "//*/h1", "description" => "//*[@itemprop='about']", "content" => "//*[@itemprop='articleBody']"),
+    "lemonde.fr" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
+    "tempsreel.nouvelobs.com" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
+    "liberation.fr" => array("h1" => "//*/h1", "description" => "//*[contains(@class, 'article-standfirst')]", "content" => "//*[contains(@class, 'article-body')]")
   );
 
 
@@ -37,7 +40,7 @@ class Moteur
     $domaine = str_replace("www.", "", $domaine);
 
     if (!in_array($domaine, array_keys($this->selectors))) {
-      if ($isException) {
+      if ($this->isException) {
         throw new Exception("Domaine non référencé");
       }
       return false;
@@ -64,7 +67,7 @@ class Moteur
   // retourne la description
   public function getContent() {
     $selector = $this->selectors[$this->domain]["content"];
-    return $this->crawler->filterXPath("//*[@id='live-messages']")->extract(array('_text', 'class', 'href')[0])[0];
+    return $this->crawler->filterXPath($selector)->extract(array('_text', 'class', 'href')[0])[0];
   }
 
   // retourne toutes les données en JSON
@@ -72,7 +75,7 @@ class Moteur
     $h1 = $this->getH1();
     $desc = $this->getDescription();
     $content = $this->getContent();
-    return json_encode(array($h1, $desc, $content));
+    return json_encode(array("h1" => $h1, "description" => $desc, "content" => $content));
   }
 
 }
