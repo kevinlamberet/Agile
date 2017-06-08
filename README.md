@@ -7,7 +7,8 @@ Documentation API
 
 ##routing :
 
-###RSS :
+### RSS :
+
     NAME : poster un article
     TYPE : POST
     URL : "url"/rss
@@ -25,7 +26,9 @@ Documentation API
     URL : "url"/rss/{id}
     PARAMETER : id dans l'URL 
     RESPONSE : 200 OK ! récupération d'un article
-###TWITTER
+
+### TWITTER
+
     NAME : poster un twitt
     TYPE : POST
     URL : "url"/twitter
@@ -43,7 +46,9 @@ Documentation API
     URL : "url"/twitter/{id}
     PARAMETER : id dans l'URL 
     RESPONSE : 200 OK ! récupération d'un twitt
-###LOGIN
+    
+### LOGIN
+
     NAME : Créer un compte
     TYPE : POST
     URL : "url"/account
