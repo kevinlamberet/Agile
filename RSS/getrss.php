@@ -62,7 +62,8 @@ for ($i=0; $i<=4; $i++) {
   $item_desc=$x->item($i)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
 
   // Insert in the database all the article shown
-  $req = $pdo->prepare("INSERT INTO article (title, link, description) VALUES (:item_title,:item_link,:item_desc)");
+  $req = $pdo->prepare("INSERT INTO article (title, link, description) VALUES (:item_title,:item_link,:item_desc) WHERE NOT EXISTS (
+    SELECT link FROM article WHERE link=':item_link') ");
   $req->execute(array(
       "item_title" => $item_title,
       "item_link" => $item_link,
