@@ -10,11 +10,11 @@
 
 ### REQUETES LOGIN
 
-SELECT `user` WHERE `user` = $user AND `password` = $password;
+SELECT `username` FROM user WHERE `username` = $user AND `password` = $password;
 
 Exemple avec des valeurs
 
-SELECT `user` WHERE `user` = 'zzz' AND `password` = 'password';
+SELECT `username` FROM user WHERE `username` = 'zzz' AND `password` = 'password';
 
 ### REQUETES INSCRIPTION
 
