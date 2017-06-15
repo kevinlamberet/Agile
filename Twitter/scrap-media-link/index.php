@@ -14,15 +14,7 @@ foreach ($json_data as $key => $value) {
     $moteur = new Moteur($url);
     // on parse le site si l'URL est valide
     if ($moteur->IsValid()) {
-      // récupération du h1
-      $h1 = $moteur->getH1();
-      // récupération de la description
-      $desc = $moteur->getDescription();
-      // récupération du contenu
-      $content = $moteur->getContent();
-      // retourne les données en JSON
-      $all = $moteur->getAll();
-      //TODO SAUVEGARDER EN BDD
+      $all = $moteur->saveAllDataParsed();
     }
   }
 }

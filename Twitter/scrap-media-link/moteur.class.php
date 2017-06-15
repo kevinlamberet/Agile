@@ -87,5 +87,10 @@ class Moteur
     return json_encode(array("h1" => $h1, "description" => $desc, "content" => $content));
   }
 
+  // sauvegarde en base les infos
+  public function saveAllDataParsed() {
+
+  }
+
 }
 ?>
