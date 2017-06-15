@@ -9,7 +9,7 @@ class Moteur
   private $h1;
   private $description;
   private $content;
-  private $isException = true;
+  private $is_valid;
 
   private $crawler;
 
@@ -18,17 +18,29 @@ class Moteur
   array (
     "lefigaro.fr" => array("h1" => "//*/h1", "description" => "//*[@itemprop='about']", "content" => "//*[@itemprop='articleBody']"),
     "lemonde.fr" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
+    "lemde.fr" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
     "tempsreel.nouvelobs.com" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
-    "liberation.fr" => array("h1" => "//*/h1", "description" => "//*[contains(@class, 'article-standfirst')]", "content" => "//*[contains(@class, 'article-body')]")
+    "ebx.sh" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
+    "bibliobs.nouvelobs.com" => array("h1" => "//*/h1", "description" => "//*[@itemprop='description']", "content" => "//*[@itemprop='articleBody']"),
+    "liberation.fr" => array("h1" => "//*/h1", "description" => "//*[contains(@class, 'article-standfirst')]", "content" => "//*[contains(@class, 'article-body')]"),
+    "next.liberation.fr" => array("h1" => "//*/h1", "description" => "//*[contains(@class, 'article-standfirst')]", "content" => "//*[contains(@class, 'article-body')]"),
+    "l.leparisien.fr" => array("h1" => "//*/h1", "description" => "//*[contains(@class, 'article-full__header')]/..", "content" => "//*[contains(@class, 'article-full__body')]/div[2]")
   );
 
 
   public function __construct($url)
   {
     if (!$this->checkIssetSite($url)) {
-      return false;
+      $this->is_valid = false;
+    } else {
+      $this->is_valid = true;
     }
     $this->url = $url;
+  }
+
+  // retourne si l'URL est valide
+  public function IsValid() {
+    return $this->is_valid === true;
   }
 
   // return false si on ne gère pas le domaine de $url
@@ -40,9 +52,6 @@ class Moteur
     $domaine = str_replace("www.", "", $domaine);
 
     if (!in_array($domaine, array_keys($this->selectors))) {
-      if ($this->isException) {
-        throw new Exception("Domaine non référencé");
-      }
       return false;
     }
 
