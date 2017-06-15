@@ -14,6 +14,22 @@ $url = 'http://tempsreel.nouvelobs.com/politique/20170608.OBS0422/les-petites-co
 // url de test liberation
 $url = 'http://www.liberation.fr/elections-presidentielle-legislatives-2017/2017/06/08/en-meeting-collomb-s-emballe-a-villeurbanne_1575277';
 
+$json_source =  file_get_contents("http://fabiendhermy.fr/twitter/");
+
+$json_data = json_decode($json_source,1);
+
+$taburl = array();
+
+foreach ($json_data as $key => $value) {
+	foreach ($json_data[$key] as $cle => $value) {
+		$taburl[] = $value['url'];
+	}
+}
+
+var_dump($taburl);
+
+
+
 $moteur = new Moteur($url);
 // récupération du h1
 $h1 = $moteur->getH1();
