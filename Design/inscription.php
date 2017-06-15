@@ -29,6 +29,58 @@
 
 </head>
 <body id="page-top" class="index">
+
+<?php
+try
+{
+$bdd = new PDO('mysql:host=localhost;dbname=docufy;charset=utf8', 'root', '');
+
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+
+
+
+if (!empty($_POST['username'])){
+
+$first_name = "rien rentré";
+$last_name = "rien rentré";
+$password = "rien rentré";
+$theme_color = "rien rentré";
+$theme_font = "rien rentré";
+$theme_font_color = "rien rentré";
+$creation_date = "rien rentré";
+$updating_date = "rien rentré";
+$username = "rien rentré";
+$email = "rien rentré";
+
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$password = $_POST['password'];
+$username = $_POST['username'];
+$email = $_POST['email'];
+
+$req = $bdd->prepare("INSERT INTO `user` (`first_name`, `last_name`, `password`,`username`, `email`) VALUES
+(:first_name, :last_name, :password,:username, :email)");
+
+$req->execute(array(
+    'first_name' => $first_name,
+    'last_name' => $last_name,
+    'password' => $password,
+    'username' => $username,
+    'email' => $email,
+    ));
+
+
+
+var_dump($_POST);
+}
+
+
+?>
+
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
     <!-- Navigation -->
@@ -86,48 +138,41 @@
         </div>
 
         <div class="row">
-          <form method="post" action="">
+          <form method="post">
             <div class="form-group">
               <label class="col-lg-2 control-label">Nom</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" name="nom" placeholder="toto">
+                <input type="text" class="form-control" name="first_name" placeholder="toto">
               </div>
             </div><br/><br/><br/>
 
             <div class="form-group">
               <label class="col-lg-2 control-label">Prenom</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" name="prenom" placeholder="kevin">
+                <input type="text" class="form-control" name="last_name" placeholder="kevin">
               </div>
             </div><br/><br/>
 
             <div class="form-group">
               <label class="col-lg-2 control-label">Mail</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" name="mail" placeholder="kevin.toto@truc.fr">
+                <input type="text" class="form-control" name="email" placeholder="kevin.toto@truc.fr">
               </div>
             </div><br/><br/>
 
             <div class="form-group">
               <label class="col-lg-2 control-label">Login</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" name="login" placeholder="xx_Dark_keke">
+                <input type="text" class="form-control" name="username" placeholder="xx_Dark_keke">
               </div>
             </div><br/><br/>
 
             <div class="form-group">
               <label class="col-lg-2 control-label">Password</label>
               <div class="col-lg-10">
-                <input type="text" class="form-control" name="password1" placeholder="123456">
+                <input type="text" class="form-control" name="password" placeholder="123456">
               </div>
             </div><br/><br/>
-
-            <div class="form-group">
-              <label class="col-lg-2 control-label">Password</label>
-              <div class="col-lg-10">
-                <input type="text" class="form-control" name="password2" placeholder="123456">
-              </div>
-            </div><br/>
 
           <br/><br/><center><button type="submit" name="submit" class="btn btn-primary">Valider</button></center>
           </form>
