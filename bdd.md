@@ -9,3 +9,13 @@
 ### REQUETES FAVORIS
 
 ### REQUETES LOGIN
+
+### REQUETES INSCRIPTION
+
+INSERT INTO `user` (`first_name`, `last_name`, `password`, `theme_color`, `theme_font`, `theme_font_color`, `creation_date`, `updating_date`, `username`, `email`) VALUES
+($first_name, $last_name, $password$, $theme_color, $theme_font, $theme_font_color, $creation_date, $updating_date, $username, $email);
+
+Exemple avec des valeurs: 
+
+INSERT INTO `user` (`first_name`, `last_name`, `password`, `theme_color`, `theme_font`, `theme_font_color`, `creation_date`, `updating_date`, `username`, `email`) VALUES
+('zzz', 'last_name', 'password', 'theme_color', '$theme_font', '$theme_font_color', '$creation_date', '$updating_date', '$username', '$email');
