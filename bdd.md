@@ -6,6 +6,7 @@
 INSERT INTO document (url, title, body) VALUES (:item_link,:item_title,:item_desc)
 
 ### REQUETES TWITTER
+INSERT INTO document (url, title, body) VALUES (:url_site, :title_site, :content_site)
 
 ### REQUETES FAVORIS
 
